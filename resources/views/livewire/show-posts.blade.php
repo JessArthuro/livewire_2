@@ -8,14 +8,50 @@
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
-          <th scope="col" class="px-6 py-3">
-            ID
+          <th wire:click="sort('id')" scope="col" class="cursor-pointer px-6 py-3" style="width: 7%;">
+            <div class="flex justify-between items-center">
+              <span>ID</span>
+              {{-- Sort --}}
+              @if ($sort == 'id')
+              @if ($direction == 'asc')
+              <i class="fa-solid fa-sort-up"></i>
+              @else
+              <i class="fa-solid fa-sort-down"></i>
+              @endif
+              @else
+              <i class="fa-solid fa-sort"></i>
+              @endif
+            </div>
           </th>
-          <th scope="col" class="px-6 py-3">
-            Title
+          <th wire:click="sort('title')" scope="col" class="cursor-pointer px-6 py-3">
+            <div class="flex justify-between items-center">
+              <span>Title</span>
+              {{-- Sort --}}
+              @if ($sort == 'title')
+              @if ($direction == 'asc')
+              <i class="fa-solid fa-sort-up"></i>
+              @else
+              <i class="fa-solid fa-sort-down"></i>
+              @endif
+              @else
+              <i class="fa-solid fa-sort"></i>
+              @endif
+            </div>
           </th>
-          <th scope="col" class="px-6 py-3">
-            Content
+          <th wire:click="sort('content')" scope="col" class="cursor-pointer px-6 py-3">
+            <div class="flex justify-between items-center">
+              <span>Content</span>
+              {{-- Sort --}}
+              @if ($sort == 'content')
+              @if ($direction == 'asc')
+              <i class="fa-solid fa-sort-up"></i>
+              @else
+              <i class="fa-solid fa-sort-down"></i>
+              @endif
+              @else
+              <i class="fa-solid fa-sort"></i>
+              @endif
+            </div>
           </th>
           <th scope="col" class="px-6 py-3">
             <span class="sr-only">Options</span>
