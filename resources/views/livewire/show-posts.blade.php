@@ -1,5 +1,10 @@
 <div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="px-6 py-3">
+      <x-jet-input wire:model="search" class="w-full" type="text" placeholder="Buscar por titulo o contenido..." />
+    </div>
+
+    @if ($posts->count())
     <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
         <tr>
@@ -36,5 +41,10 @@
         @endforeach
       </tbody>
     </table>
+    @else
+    <div class="px-6 py-3">
+      No existe ningún registro coincidente...
+    </div>
+    @endif
   </div>
 </div>
