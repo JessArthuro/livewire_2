@@ -11,6 +11,9 @@ class ShowPosts extends Component
   public $sort = 'id';
   public $direction = 'desc';
 
+  // listen to the child event and execute the parent component's render function
+  protected $listeners = ['render' => 'render'];
+
   public function render()
   {
     $posts = Post::where('title', 'like', '%' . $this->search . '%')

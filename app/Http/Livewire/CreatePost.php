@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class CreatePost extends Component
 {
-  public $open = true;
+  public $open = false;
   public $title, $content;
 
   public function save() {
@@ -15,6 +15,12 @@ class CreatePost extends Component
       'title' => $this->title,
       'content' => $this->content
     ]);
+
+    $this->reset(['open', 'title', 'content']);
+
+    // render is the name of the event you want to emit
+    $this->emit('render');
+    $this->emit('alert', 'Post created successfully');
   }
 
   public function render()
