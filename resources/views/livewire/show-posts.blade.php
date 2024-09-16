@@ -1,7 +1,8 @@
 <div>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <div class="px-6 py-3">
-      <x-jet-input wire:model="search" class="w-full" type="text" placeholder="Buscar por titulo o contenido..." />
+    <div class="px-6 py-3 bg-white flex items-center gap-4 flex-wrap">
+      <x-jet-input wire:model="search" class="flex-1" type="text" placeholder="Buscar por titulo o contenido..." />
+      @livewire('create-post')
     </div>
 
     @if ($posts->count())
