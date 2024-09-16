@@ -4,15 +4,24 @@ namespace App\Http\Livewire;
 
 use App\Models\Post;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class CreatePost extends Component
 {
+  use WithFileUploads;
+
   public $open = false;
-  public $title, $content;
+  public $title, $content, $image, $identificador;
+
+  public function mount()
+  {
+    $this->identificador = rand();
+  }
 
   protected $rules = [
     'title' => 'required',
     'content' => 'required',
+    'image' => 'required|image',
   ];
 
   public function updated($propertyName)
@@ -24,12 +33,16 @@ class CreatePost extends Component
   {
     $this->validate();
 
+    $image = $this->image->store('posts');
+
     Post::create([
       'title' => $this->title,
-      'content' => $this->content
+      'content' => $this->content,
+      'image' => $image,
     ]);
 
-    $this->reset(['open', 'title', 'content']);
+    $this->reset(['open', 'title', 'content', 'image']);
+    $this->identificador = rand();
 
     // render is the name of the event you want to emit
     $this->emit('render');
