@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('posts');
         // Create posts folder if it does not exist
         Storage::makeDirectory('posts');
-        \App\Models\Post::factory(100)->create();
+        \App\Models\Post::factory(30)->create();
+        $this->call(AdminSeeder::class);
     }
 }

@@ -33,12 +33,13 @@ class CreatePost extends Component
   {
     $this->validate();
 
-    $image = $this->image->store('posts');
+    $imagePath = $this->image->store('posts');
+    $imageName = basename($imagePath);
 
     Post::create([
       'title' => $this->title,
       'content' => $this->content,
-      'image' => $image,
+      'image' => $imageName,
     ]);
 
     $this->reset(['open', 'title', 'content', 'image']);
